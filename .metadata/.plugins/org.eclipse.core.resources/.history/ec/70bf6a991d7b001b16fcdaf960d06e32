@@ -1,0 +1,44 @@
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class FirstFrameEx1 extends JFrame implements ActionListener {
+	private JButton btn = new JButton("OK");
+	public FirstFrameEx1() {
+		this.setTitle("첫번째 프레임");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		this.formDesign();
+		this.eventHandler();
+		this.setSize(300, 200);
+		this.setVisible(true);
+	}
+	
+	public void formDesign() {
+		this.setLayout(new FlowLayout());
+//		this.add(btn);
+		Container c = getContentPane();	//컨텐츠팬을 얻어온다.
+		c.add(btn);
+	}
+	public void eventHandler() {
+		//1)소스  2)귀를 달아준다. 3)이벤트 객체 생성(4가지)
+		btn.addActionListener(this);
+	}
+	
+	public static void main(String[] args) {
+		new FirstFrameEx1();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getActionCommand() == "OK")
+			btn.setText("버튼클릭!!!");
+		else
+			btn.setText("OK");
+	}
+}
